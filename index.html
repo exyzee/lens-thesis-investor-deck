@@ -115,14 +115,18 @@ h2{font-size:clamp(26px,4.2vw,50px);font-weight:700;line-height:1.08;letter-spac
 .vote{margin-top:clamp(22px,2.8vw,32px);max-width:34ch;}
 
 /* email thread */
-.email-thread{margin-top:clamp(16px,2vw,22px);display:flex;flex-direction:column;gap:6px;max-width:38ch;}
-.eml{padding:9px 12px;border-radius:10px;font-size:12px;line-height:1.4;position:relative;}
-.eml-out{background:var(--accent-soft);border:1px solid rgba(47,91,234,.15);margin-right:20px;}
-.eml-in{background:var(--card);border:1px solid var(--line);margin-left:20px;}
+.protocol-split{display:grid;grid-template-columns:1.2fr .8fr;gap:clamp(30px,4vw,56px);align-items:start;}
+@media(max-width:1000px){.protocol-split{grid-template-columns:1fr;}}
+.email-thread{display:flex;flex-direction:column;gap:7px;max-width:340px;padding-top:clamp(10px,2vw,20px);}
+.eml{padding:10px 13px;border-radius:11px;font-size:12.5px;line-height:1.45;position:relative;}
+.eml-out{background:var(--accent-soft);border:1px solid rgba(47,91,234,.15);margin-right:16px;}
+.eml-in{background:var(--card);border:1px solid var(--line);margin-left:16px;}
 .eml-who{font-size:10px;font-weight:700;color:var(--muted);margin-bottom:3px;}
 .eml-out .eml-who{color:var(--accent);}
 .eml-body{color:var(--ink-2);font-weight:500;}
-.eml-time{font-size:9.5px;color:var(--faint);margin-top:3px;text-align:right;font-variant-numeric:tabular-nums;}
+.eml-time{font-size:9.5px;color:var(--faint);margin-top:4px;text-align:right;font-variant-numeric:tabular-nums;}
+.eml-anim{opacity:0;transform:translateY(12px);transition:opacity .4s ease, transform .4s ease;}
+.eml-anim.visible{opacity:1;transform:none;}
 .vote .q{font-size:13.5px;color:var(--muted);font-weight:600;margin-bottom:12px;}
 .vbtns{display:flex;gap:10px;}
 .vbtn{flex:1;font-family:inherit;font-weight:600;font-size:14px;color:var(--ink);background:var(--card);border:1px solid var(--line-2);border-radius:11px;padding:13px 10px;cursor:pointer;transition:.16s;}
@@ -300,13 +304,6 @@ h2{font-size:clamp(26px,4.2vw,50px);font-weight:700;line-height:1.08;letter-spac
       <div>
         <h1>you run the newsroom. a tip just landed.</h1>
         <p class="lead">the knicks just won. your field reporter sent this from 7th avenue — things are getting out of hand. before you publish, you have to run checks, verify provenance, and start emailing back and forth for credentials.</p>
-        <div class="email-thread">
-          <div class="eml eml-out"><div class="eml-who">you → reporter</div><div class="eml-body">need metadata on this. when was it taken? what device? can you send the original?</div><div class="eml-time">11:42 pm</div></div>
-          <div class="eml eml-in"><div class="eml-who">reporter → you</div><div class="eml-body">just my iphone, like 20 min ago. sending original now</div><div class="eml-time">11:48 pm</div></div>
-          <div class="eml eml-out"><div class="eml-who">you → reporter</div><div class="eml-body">the file has no exif. did you crop it? need the untouched file + location pin + timestamp</div><div class="eml-time">11:53 pm</div></div>
-          <div class="eml eml-in"><div class="eml-who">reporter → you</div><div class="eml-body">yeah i cropped. one sec looking for original in my camera roll</div><div class="eml-time">12:01 am</div></div>
-          <div class="eml eml-out"><div class="eml-who">you → reporter</div><div class="eml-body">still waiting. competitor already posted their version. can you also confirm you were physically there?</div><div class="eml-time">12:14 am</div></div>
-        </div>
         <div class="vote">
           <div class="q">is it real?</div>
           <div class="vbtns">
@@ -335,21 +332,34 @@ h2{font-size:clamp(26px,4.2vw,50px);font-weight:700;line-height:1.08;letter-spac
 
   <!-- 2 · the protocol -->
   <section class="slide" data-label="the protocol">
-    <h1>so you run the protocol.</h1>
-    <p class="lead">every image a newsroom publishes goes through the same set of manual checks. this is what verifying that tip actually takes.</p>
-    <div class="checklist">
-      <div class="cli"><div class="num">01</div><div><div class="task">reverse image search across google, bing, yandex</div><div class="friction">different indexes, three separate uis, no batch search</div></div><div class="time">10 min</div></div>
-      <div class="cli"><div class="num">02</div><div><div class="task">exif metadata extraction</div><div class="friction">often stripped by social platforms before it reached you</div></div><div class="time">5 min</div></div>
-      <div class="cli"><div class="num">03</div><div><div class="task">geolocation cross-reference with satellite</div><div class="friction">manual pass on google earth, shadow direction by hand</div></div><div class="time">8 min</div></div>
-      <div class="cli"><div class="num">04</div><div><div class="task">archive history, earliest appearance</div><div class="friction">wayback search, image-by-image, mostly empty</div></div><div class="time">5 min</div></div>
-      <div class="cli"><div class="num">05</div><div><div class="task">lighting and shadow consistency</div><div class="friction">expert skill, error-prone, no checkable output</div></div><div class="time">7 min</div></div>
-      <div class="cli"><div class="num">06</div><div><div class="task">source vetting and provenance</div><div class="friction">who sent it, can you actually reach them on deadline</div></div><div class="time">10 min</div></div>
-      <div class="cli"><div class="num">07</div><div><div class="task">ai artifact inspection</div><div class="friction">hands, text, asymmetry, vibes. mostly unreliable</div></div><div class="time">5 min</div></div>
-    </div>
-    <div class="cli-total">
-      <div class="cli-t"><div class="lbl">total work</div><div class="val">≈ 50 min</div></div>
-      <div class="cli-t urgent"><div class="lbl">your deadline</div><div class="val">20 min</div></div>
-      <div class="cli-t bad"><div class="lbl">proof you can show readers</div><div class="val">none</div></div>
+    <div class="protocol-split">
+      <div>
+        <h1>so you run the protocol.</h1>
+        <p class="lead">every image a newsroom publishes goes through the same set of manual checks. this is what verifying that tip actually takes.</p>
+        <div class="checklist">
+          <div class="cli"><div class="num">01</div><div><div class="task">reverse image search across google, bing, yandex</div><div class="friction">different indexes, three separate uis, no batch search</div></div><div class="time">10 min</div></div>
+          <div class="cli"><div class="num">02</div><div><div class="task">exif metadata extraction</div><div class="friction">often stripped by social platforms before it reached you</div></div><div class="time">5 min</div></div>
+          <div class="cli"><div class="num">03</div><div><div class="task">geolocation cross-reference with satellite</div><div class="friction">manual pass on google earth, shadow direction by hand</div></div><div class="time">8 min</div></div>
+          <div class="cli"><div class="num">04</div><div><div class="task">archive history, earliest appearance</div><div class="friction">wayback search, image-by-image, mostly empty</div></div><div class="time">5 min</div></div>
+          <div class="cli"><div class="num">05</div><div><div class="task">lighting and shadow consistency</div><div class="friction">expert skill, error-prone, no checkable output</div></div><div class="time">7 min</div></div>
+          <div class="cli"><div class="num">06</div><div><div class="task">source vetting and provenance</div><div class="friction">who sent it, can you actually reach them on deadline</div></div><div class="time">10 min</div></div>
+          <div class="cli"><div class="num">07</div><div><div class="task">ai artifact inspection</div><div class="friction">hands, text, asymmetry, vibes. mostly unreliable</div></div><div class="time">5 min</div></div>
+        </div>
+        <div class="cli-total">
+          <div class="cli-t"><div class="lbl">total work</div><div class="val">≈ 50 min</div></div>
+          <div class="cli-t urgent"><div class="lbl">your deadline</div><div class="val">20 min</div></div>
+          <div class="cli-t bad"><div class="lbl">proof you can show readers</div><div class="val">none</div></div>
+        </div>
+      </div>
+      <div class="email-thread" id="emailThread">
+        <div class="eml eml-out eml-anim"><div class="eml-who">you → reporter</div><div class="eml-body">need metadata on this. when was it taken? what device? can you send the original?</div><div class="eml-time">11:42 pm</div></div>
+        <div class="eml eml-in eml-anim"><div class="eml-who">reporter → you</div><div class="eml-body">just my iphone, like 20 min ago. sending original now</div><div class="eml-time">11:48 pm</div></div>
+        <div class="eml eml-out eml-anim"><div class="eml-who">you → reporter</div><div class="eml-body">the file has no exif. did you crop it? need the untouched file + location pin + timestamp</div><div class="eml-time">11:53 pm</div></div>
+        <div class="eml eml-in eml-anim"><div class="eml-who">reporter → you</div><div class="eml-body">yeah i cropped. one sec looking for original in my camera roll</div><div class="eml-time">12:01 am</div></div>
+        <div class="eml eml-out eml-anim"><div class="eml-who">you → reporter</div><div class="eml-body">still waiting. competitor already posted. can you confirm you were physically there?</div><div class="eml-time">12:14 am</div></div>
+        <div class="eml eml-in eml-anim"><div class="eml-who">reporter → you</div><div class="eml-body">yes i was there!! here's a screen recording of my camera roll with the timestamp</div><div class="eml-time">12:22 am</div></div>
+        <div class="eml eml-out eml-anim"><div class="eml-who">you → reporter</div><div class="eml-body">ok running it through reverse image now. can you also send a pin of your location when you took it?</div><div class="eml-time">12:28 am</div></div>
+      </div>
     </div>
   </section>
 
@@ -609,6 +619,7 @@ h2{font-size:clamp(26px,4.2vw,50px);font-weight:700;line-height:1.08;letter-spac
   }
   var mktgScroll = document.getElementById('mktgScroll');
   var scrollTimer = null;
+  var emailTimers = [];
   function triggerAutoScroll(){
     if(!mktgScroll) return;
     clearTimeout(scrollTimer);
@@ -629,7 +640,22 @@ h2{font-size:clamp(26px,4.2vw,50px);font-weight:700;line-height:1.08;letter-spac
     }, 800);
   }
 
-  function go(n){ i=Math.max(0,Math.min(total-1,n)); render(); if(slides[i].dataset.label==='the team') triggerAutoScroll(); }
+  function triggerEmailAnim(){
+    var emails = document.querySelectorAll('.eml-anim');
+    emailTimers.forEach(function(t){clearTimeout(t);});
+    emailTimers = [];
+    emails.forEach(function(el){el.classList.remove('visible');});
+    emails.forEach(function(el,idx){
+      var t = setTimeout(function(){ el.classList.add('visible'); }, 600 + idx * 700);
+      emailTimers.push(t);
+    });
+  }
+
+  function go(n){
+    i=Math.max(0,Math.min(total-1,n)); render();
+    if(slides[i].dataset.label==='the team') triggerAutoScroll();
+    if(slides[i].dataset.label==='the protocol') triggerEmailAnim();
+  }
   function next(){ go(i+1); } function prev(){ go(i-1); }
 
   // vote
