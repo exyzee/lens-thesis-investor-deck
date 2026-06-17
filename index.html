@@ -350,33 +350,9 @@ h2{font-size:clamp(26px,4.2vw,50px);font-weight:700;line-height:1.08;letter-spac
 
   <!-- 1 · the tip -->
   <section class="slide" data-label="the tip">
-    <div class="split">
-      <div>
-        <h1>you run the newsroom. a tip just landed.</h1>
-        <p class="lead">the knicks just won. your field reporter sent this from 7th avenue. things are getting out of hand. before you publish, you have to run checks, verify provenance, and start emailing back and forth for credentials.</p>
-        <div class="vote">
-          <div class="q">is it real?</div>
-          <div class="vbtns">
-            <button class="vbtn" id="vReal">real photo</button>
-            <button class="vbtn" id="vFake">ai-generated</button>
-          </div>
-          <div class="bars" id="bars">
-            <div class="bar real"><div class="bl"><span>real photo</span><span id="pReal">0%</span></div><div class="track"><div class="fill" id="fReal"></div></div></div>
-            <div class="bar fake"><div class="bl"><span>ai-generated</span><span id="pFake">0%</span></div><div class="track"><div class="fill" id="fFake"></div></div></div>
-          </div>
-          <div class="reveal" id="reveal">
-            no one in this room can be sure. a 2025 science study put human accuracy at <b>38%</b>. worse than a coin flip.
-          </div>
-        </div>
-      </div>
-      <div class="phone">
-        <div class="notch"></div>
-        <div class="mail">
-          <div class="mhd"><span class="av"></span><div><div class="mfrom">field reporter</div><div class="mmeta">to: newsdesk · just now</div></div></div>
-          <div class="msub">knicks won. 7th ave is chaos rn</div>
-          <div class="tip-photo photo-fill"></div>
-        </div>
-      </div>
+    <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;height:100%;">
+      <h1 style="max-width:none;font-size:clamp(38px,6.5vw,86px);text-align:center;">you run the newsroom.<br>a tip just landed.</h1>
+      <p class="lead" style="text-align:center;max-width:48ch;">the knicks just won. your field reporter sent you a photo from 7th avenue. things are getting out of hand.</p>
     </div>
   </section>
 
@@ -384,8 +360,8 @@ h2{font-size:clamp(26px,4.2vw,50px);font-weight:700;line-height:1.08;letter-spac
   <section class="slide" data-label="the protocol">
     <div class="protocol-split">
       <div>
-        <h1>so you run the protocol.</h1>
-        <p class="lead">every image a newsroom publishes goes through the same set of manual checks. this is what verifying that tip actually takes.</p>
+        <h1>before you publish, you run the protocol.</h1>
+        <p class="lead">you have to run checks, verify provenance, and start emailing back and forth for credentials. this is what it actually takes.</p>
         <div class="checklist">
           <div class="cli"><div class="num">01</div><div><div class="task">reverse image search across google, bing, yandex</div><div class="friction">different indexes, three separate uis, no batch search</div></div><div class="time">10 min</div></div>
           <div class="cli"><div class="num">02</div><div><div class="task">exif metadata extraction</div><div class="friction">often stripped by social platforms before it reached you</div></div><div class="time">5 min</div></div>
@@ -401,14 +377,22 @@ h2{font-size:clamp(26px,4.2vw,50px);font-weight:700;line-height:1.08;letter-spac
           <div class="cli-t bad"><div class="lbl">proof you can show readers</div><div class="val">none</div></div>
         </div>
       </div>
-      <div class="email-thread" id="emailThread">
-        <div class="eml eml-out eml-anim"><div class="eml-who">you → reporter</div><div class="eml-body">need metadata on this. when was it taken? what device? can you send the original?</div><div class="eml-time">11:42 pm</div></div>
-        <div class="eml eml-in eml-anim"><div class="eml-who">reporter → you</div><div class="eml-body">just my iphone, like 20 min ago. sending original now</div><div class="eml-time">11:48 pm</div></div>
-        <div class="eml eml-out eml-anim"><div class="eml-who">you → reporter</div><div class="eml-body">the file has no exif. did you crop it? need the untouched file + location pin + timestamp</div><div class="eml-time">11:53 pm</div></div>
-        <div class="eml eml-in eml-anim"><div class="eml-who">reporter → you</div><div class="eml-body">yeah i cropped. one sec looking for original in my camera roll</div><div class="eml-time">12:01 am</div></div>
-        <div class="eml eml-out eml-anim"><div class="eml-who">you → reporter</div><div class="eml-body">still waiting. competitor already posted. can you confirm you were physically there?</div><div class="eml-time">12:14 am</div></div>
-        <div class="eml eml-in eml-anim"><div class="eml-who">reporter → you</div><div class="eml-body">yes i was there!! here's a screen recording of my camera roll with the timestamp</div><div class="eml-time">12:22 am</div></div>
-        <div class="eml eml-out eml-anim"><div class="eml-who">you → reporter</div><div class="eml-body">ok running it through reverse image now. can you also send a pin of your location when you took it?</div><div class="eml-time">12:28 am</div></div>
+      <div>
+        <div class="phone" style="width:min(260px,70vw);">
+          <div class="notch"></div>
+          <div class="mail">
+            <div class="mhd"><span class="av"></span><div><div class="mfrom">field reporter</div><div class="mmeta">to: newsdesk · just now</div></div></div>
+            <div class="msub">knicks won. 7th ave is chaos rn</div>
+            <div class="tip-photo photo-fill"></div>
+          </div>
+        </div>
+        <div class="email-thread" id="emailThread" style="margin-top:14px;">
+          <div class="eml eml-out eml-anim"><div class="eml-who">you → reporter</div><div class="eml-body">need metadata. when was it taken? what device? send the original</div><div class="eml-time">11:42 pm</div></div>
+          <div class="eml eml-in eml-anim"><div class="eml-who">reporter → you</div><div class="eml-body">just my iphone, like 20 min ago. sending now</div><div class="eml-time">11:48 pm</div></div>
+          <div class="eml eml-out eml-anim"><div class="eml-who">you → reporter</div><div class="eml-body">no exif. did you crop it? need untouched file + location pin</div><div class="eml-time">11:53 pm</div></div>
+          <div class="eml eml-in eml-anim"><div class="eml-who">reporter → you</div><div class="eml-body">yeah i cropped. looking for original in camera roll</div><div class="eml-time">12:01 am</div></div>
+          <div class="eml eml-out eml-anim"><div class="eml-who">you → reporter</div><div class="eml-body">still waiting. can you confirm you were physically there?</div><div class="eml-time">12:14 am</div></div>
+        </div>
       </div>
     </div>
   </section>
