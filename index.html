@@ -250,6 +250,24 @@ h2{font-size:clamp(26px,4.2vw,50px);font-weight:700;line-height:1.08;letter-spac
 .list .li{break-inside:avoid;display:flex;gap:11px;padding:7px 0;font-size:14px;line-height:1.45;color:var(--ink-2);font-weight:500;}
 .list .li .k{color:var(--known);font-weight:700;flex:none;}
 
+/* browser mockup */
+.browser{background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden;box-shadow:0 2px 4px rgba(20,22,26,.04), 0 34px 70px -36px rgba(20,22,26,.30);width:100%;max-width:480px;}
+.browser .bbar{display:flex;align-items:center;gap:7px;padding:10px 14px;border-bottom:1px solid var(--line);background:var(--paper-2);}
+.browser .bdot{width:7px;height:7px;border-radius:50%;background:var(--line-2);}
+.browser .burl{flex:1;font-size:10.5px;font-weight:600;color:var(--muted);background:var(--card);border:1px solid var(--line);border-radius:5px;padding:4px 10px;margin-left:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.browser .bviewport{height:clamp(320px,52vh,480px);overflow-y:auto;-webkit-overflow-scrolling:touch;scroll-behavior:smooth;}
+.browser .bviewport::-webkit-scrollbar{width:4px;}
+.browser .bviewport::-webkit-scrollbar-thumb{background:var(--line-2);border-radius:4px;}
+.browser .bviewport iframe{width:100%;height:100%;border:0;pointer-events:none;}
+.browser .bviewport img{width:100%;display:block;}
+.browser.auto-scroll .bviewport{animation:autoscroll 12s 1.2s ease-in-out forwards;}
+@keyframes autoscroll{0%{scroll-behavior:auto;}5%{scroll-behavior:auto;}100%{scroll-behavior:auto;}}
+.team-split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,5vw,72px);align-items:center;}
+@media(max-width:920px){.team-split{grid-template-columns:1fr;gap:28px;} .browser{max-width:100%;}}
+.team-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:clamp(16px,2vw,24px);}
+.team-tag{font-size:11.5px;font-weight:600;color:var(--ink-2);background:var(--card);border:1px solid var(--line);border-radius:8px;padding:7px 12px;}
+.team-tag .tt-accent{color:var(--accent);margin-right:6px;}
+
 /* help */
 .help{position:fixed;inset:0;z-index:30;background:rgba(242,243,244,.94);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;padding:30px;}
 .help.show{display:flex;}
@@ -445,9 +463,30 @@ h2{font-size:clamp(26px,4.2vw,50px);font-weight:700;line-height:1.08;letter-spac
 
   <!-- 12 · team -->
   <section class="slide" data-label="the team">
-    <h1>i design, code, and ship.</h1>
-    <p class="lead" style="max-width:58ch">jha sundaram, founder. founding designer three times over, self-taught coder since thirteen, shipping web3 and ai products since my teens. currently head of design at a frontier ai company, and i founded belgium's first onchain community event. i've spoken at ethcc, ethbelgrade and napuleth.</p>
-    <p class="lead" style="max-width:58ch">lens is mine end to end. <strong>i designed it, built it, deployed it.</strong> the thing you're looking at is the proof of what one operator ships.</p>
+    <div class="team-split">
+      <div>
+        <h1>not just the product. the entire go-to-market.</h1>
+        <p class="lead" style="max-width:44ch">jha sundaram, founder. founding designer three times over, self-taught coder since thirteen, shipping web3 and ai products since my teens. head of design at a frontier ai company.</p>
+        <p class="lead" style="max-width:44ch">product, marketing site, pitch deck, brand — <strong>all one person, all live.</strong></p>
+        <div class="team-tags">
+          <span class="team-tag"><span class="tt-accent">›</span> product</span>
+          <span class="team-tag"><span class="tt-accent">›</span> marketing site</span>
+          <span class="team-tag"><span class="tt-accent">›</span> brand &amp; identity</span>
+          <span class="team-tag"><span class="tt-accent">›</span> pitch deck</span>
+          <span class="team-tag"><span class="tt-accent">›</span> full-stack eng</span>
+          <span class="team-tag"><span class="tt-accent">›</span> deployment</span>
+        </div>
+      </div>
+      <div class="browser auto-scroll" id="mktgBrowser">
+        <div class="bbar">
+          <span class="bdot"></span><span class="bdot"></span><span class="bdot"></span>
+          <span class="burl">tryoutlens.vercel.app</span>
+        </div>
+        <div class="bviewport" id="mktgScroll">
+          <iframe src="https://tryoutlens.vercel.app/" title="Lens marketing page" loading="lazy"></iframe>
+        </div>
+      </div>
+    </div>
   </section>
 
   <!-- 13 · ai, honestly -->
@@ -554,7 +593,29 @@ h2{font-size:clamp(26px,4.2vw,50px);font-weight:700;line-height:1.08;letter-spac
       hudCount.textContent = pad(i+1)+' / '+pad(mainCount);
     }
   }
-  function go(n){ i=Math.max(0,Math.min(total-1,n)); render(); }
+  var mktgScroll = document.getElementById('mktgScroll');
+  var scrollTimer = null;
+  function triggerAutoScroll(){
+    if(!mktgScroll) return;
+    clearTimeout(scrollTimer);
+    mktgScroll.scrollTop = 0;
+    scrollTimer = setTimeout(function(){
+      var target = mktgScroll.scrollHeight - mktgScroll.clientHeight;
+      var start = 0;
+      var duration = 10000;
+      var startTime = null;
+      function step(ts){
+        if(!startTime) startTime = ts;
+        var progress = Math.min((ts - startTime) / duration, 1);
+        var ease = progress < 0.5 ? 2*progress*progress : 1 - Math.pow(-2*progress+2,2)/2;
+        mktgScroll.scrollTop = ease * target;
+        if(progress < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    }, 800);
+  }
+
+  function go(n){ i=Math.max(0,Math.min(total-1,n)); render(); if(slides[i].dataset.label==='the team') triggerAutoScroll(); }
   function next(){ go(i+1); } function prev(){ go(i-1); }
 
   // vote
