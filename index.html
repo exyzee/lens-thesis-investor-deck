@@ -251,18 +251,15 @@ h2{font-size:clamp(26px,4.2vw,50px);font-weight:700;line-height:1.08;letter-spac
 .list .li .k{color:var(--known);font-weight:700;flex:none;}
 
 /* browser mockup */
-.browser{background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden;box-shadow:0 2px 4px rgba(20,22,26,.04), 0 34px 70px -36px rgba(20,22,26,.30);width:100%;max-width:480px;}
-.browser .bbar{display:flex;align-items:center;gap:7px;padding:10px 14px;border-bottom:1px solid var(--line);background:var(--paper-2);}
+.browser{background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden;box-shadow:0 2px 4px rgba(20,22,26,.04), 0 34px 70px -36px rgba(20,22,26,.30);width:100%;max-width:420px;}
+.browser .bbar{display:flex;align-items:center;gap:7px;padding:9px 14px;border-bottom:1px solid var(--line);background:var(--paper-2);}
 .browser .bdot{width:7px;height:7px;border-radius:50%;background:var(--line-2);}
 .browser .burl{flex:1;font-size:10.5px;font-weight:600;color:var(--muted);background:var(--card);border:1px solid var(--line);border-radius:5px;padding:4px 10px;margin-left:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-.browser .bviewport{height:clamp(320px,52vh,480px);overflow-y:auto;-webkit-overflow-scrolling:touch;scroll-behavior:smooth;}
+.browser .bviewport{height:clamp(380px,72vh,600px);overflow-y:auto;-webkit-overflow-scrolling:touch;}
 .browser .bviewport::-webkit-scrollbar{width:4px;}
 .browser .bviewport::-webkit-scrollbar-thumb{background:var(--line-2);border-radius:4px;}
-.browser .bviewport iframe{width:100%;height:100%;border:0;pointer-events:none;}
 .browser .bviewport img{width:100%;display:block;}
-.browser.auto-scroll .bviewport{animation:autoscroll 12s 1.2s ease-in-out forwards;}
-@keyframes autoscroll{0%{scroll-behavior:auto;}5%{scroll-behavior:auto;}100%{scroll-behavior:auto;}}
-.team-split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,5vw,72px);align-items:center;}
+.team-split{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(30px,5vw,64px);align-items:center;}
 @media(max-width:920px){.team-split{grid-template-columns:1fr;gap:28px;} .browser{max-width:100%;}}
 .team-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:clamp(16px,2vw,24px);}
 .team-tag{font-size:11.5px;font-weight:600;color:var(--ink-2);background:var(--card);border:1px solid var(--line);border-radius:8px;padding:7px 12px;}
@@ -477,13 +474,13 @@ h2{font-size:clamp(26px,4.2vw,50px);font-weight:700;line-height:1.08;letter-spac
           <span class="team-tag"><span class="tt-accent">›</span> deployment</span>
         </div>
       </div>
-      <div class="browser auto-scroll" id="mktgBrowser">
+      <div class="browser" id="mktgBrowser">
         <div class="bbar">
           <span class="bdot"></span><span class="bdot"></span><span class="bdot"></span>
           <span class="burl">tryoutlens.vercel.app</span>
         </div>
         <div class="bviewport" id="mktgScroll">
-          <iframe src="https://tryoutlens.vercel.app/" title="Lens marketing page" loading="lazy"></iframe>
+          <img src="marketing.png" alt="Lens marketing page" />
         </div>
       </div>
     </div>
