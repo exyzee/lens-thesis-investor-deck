@@ -14,7 +14,7 @@
    demo proof page. set it once below.
    ============================================================ */
 :root{
-  --demo-img: none;
+  --demo-img: url(tip-photo.jpg);
 
   --paper:#F2F3F4;
   --paper-2:#EAEBEC;
@@ -113,6 +113,16 @@ h2{font-size:clamp(26px,4.2vw,50px);font-weight:700;line-height:1.08;letter-spac
 .ph-mark span{font-size:10px;color:var(--faint);font-weight:500;}
 
 .vote{margin-top:clamp(22px,2.8vw,32px);max-width:34ch;}
+
+/* email thread */
+.email-thread{margin-top:clamp(16px,2vw,22px);display:flex;flex-direction:column;gap:6px;max-width:38ch;}
+.eml{padding:9px 12px;border-radius:10px;font-size:12px;line-height:1.4;position:relative;}
+.eml-out{background:var(--accent-soft);border:1px solid rgba(47,91,234,.15);margin-right:20px;}
+.eml-in{background:var(--card);border:1px solid var(--line);margin-left:20px;}
+.eml-who{font-size:10px;font-weight:700;color:var(--muted);margin-bottom:3px;}
+.eml-out .eml-who{color:var(--accent);}
+.eml-body{color:var(--ink-2);font-weight:500;}
+.eml-time{font-size:9.5px;color:var(--faint);margin-top:3px;text-align:right;font-variant-numeric:tabular-nums;}
 .vote .q{font-size:13.5px;color:var(--muted);font-weight:600;margin-bottom:12px;}
 .vbtns{display:flex;gap:10px;}
 .vbtn{flex:1;font-family:inherit;font-weight:600;font-size:14px;color:var(--ink);background:var(--card);border:1px solid var(--line-2);border-radius:11px;padding:13px 10px;cursor:pointer;transition:.16s;}
@@ -289,7 +299,14 @@ h2{font-size:clamp(26px,4.2vw,50px);font-weight:700;line-height:1.08;letter-spac
     <div class="split">
       <div>
         <h1>you run the newsroom. a tip just landed.</h1>
-        <p class="lead">an anonymous source emailed you a photo. it's already going viral on x. before you publish, you have to run checks, ask them to share credentials, and verify provenance according to protocol.</p>
+        <p class="lead">the knicks just won. your field reporter sent this from 7th avenue — things are getting out of hand. before you publish, you have to run checks, verify provenance, and start emailing back and forth for credentials.</p>
+        <div class="email-thread">
+          <div class="eml eml-out"><div class="eml-who">you → reporter</div><div class="eml-body">need metadata on this. when was it taken? what device? can you send the original?</div><div class="eml-time">11:42 pm</div></div>
+          <div class="eml eml-in"><div class="eml-who">reporter → you</div><div class="eml-body">just my iphone, like 20 min ago. sending original now</div><div class="eml-time">11:48 pm</div></div>
+          <div class="eml eml-out"><div class="eml-who">you → reporter</div><div class="eml-body">the file has no exif. did you crop it? need the untouched file + location pin + timestamp</div><div class="eml-time">11:53 pm</div></div>
+          <div class="eml eml-in"><div class="eml-who">reporter → you</div><div class="eml-body">yeah i cropped. one sec looking for original in my camera roll</div><div class="eml-time">12:01 am</div></div>
+          <div class="eml eml-out"><div class="eml-who">you → reporter</div><div class="eml-body">still waiting. competitor already posted their version. can you also confirm you were physically there?</div><div class="eml-time">12:14 am</div></div>
+        </div>
         <div class="vote">
           <div class="q">is it real?</div>
           <div class="vbtns">
@@ -308,9 +325,9 @@ h2{font-size:clamp(26px,4.2vw,50px);font-weight:700;line-height:1.08;letter-spac
       <div class="phone">
         <div class="notch"></div>
         <div class="mail">
-          <div class="mhd"><span class="av"></span><div><div class="mfrom">anonymous source</div><div class="mmeta">to: newsdesk · now</div></div></div>
-          <div class="msub">is this real?? saw it 5 min ago</div>
-          <div class="tip-photo photo-fill"><div class="ph-mark"><span class="reticle"></span><span>your example image</span></div></div>
+          <div class="mhd"><span class="av"></span><div><div class="mfrom">field reporter</div><div class="mmeta">to: newsdesk · just now</div></div></div>
+          <div class="msub">knicks won — 7th ave is chaos rn</div>
+          <div class="tip-photo photo-fill"></div>
         </div>
       </div>
     </div>
