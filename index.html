@@ -348,7 +348,15 @@ h2{font-size:clamp(26px,4.2vw,50px);font-weight:700;line-height:1.08;letter-spac
 
 <div class="deck" id="deck">
 
-  <!-- 1 · the tip -->
+  <!-- 1 · intro -->
+  <section class="slide" data-label="lens">
+    <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;height:100%;">
+      <h1 style="max-width:none;font-size:clamp(52px,9vw,130px);text-align:center;letter-spacing:-.04em;">lens</h1>
+      <p class="lead" style="text-align:center;max-width:40ch;margin-top:clamp(12px,2vw,24px);">image verification for newsrooms.</p>
+    </div>
+  </section>
+
+  <!-- 2 · the tip -->
   <section class="slide" data-label="the tip">
     <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;height:100%;">
       <h1 style="max-width:none;font-size:clamp(38px,6.5vw,86px);text-align:center;">you run the newsroom.<br>a tip just landed.</h1>
@@ -356,7 +364,21 @@ h2{font-size:clamp(26px,4.2vw,50px);font-weight:700;line-height:1.08;letter-spac
     </div>
   </section>
 
-  <!-- 2 · the protocol -->
+  <!-- 3 · the image -->
+  <section class="slide" data-label="the image">
+    <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;">
+      <div class="phone" style="width:min(320px,80vw);">
+        <div class="notch"></div>
+        <div class="mail">
+          <div class="mhd"><span class="av"></span><div><div class="mfrom">field reporter</div><div class="mmeta">to: newsdesk · just now</div></div></div>
+          <div class="msub">knicks won. 7th ave is chaos rn</div>
+          <div class="tip-photo photo-fill" style="height:220px;"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4 · the protocol -->
   <section class="slide" data-label="the protocol">
     <div class="protocol-split">
       <div>
@@ -377,22 +399,12 @@ h2{font-size:clamp(26px,4.2vw,50px);font-weight:700;line-height:1.08;letter-spac
           <div class="cli-t bad"><div class="lbl">proof you can show readers</div><div class="val">none</div></div>
         </div>
       </div>
-      <div>
-        <div class="phone" style="width:min(260px,70vw);">
-          <div class="notch"></div>
-          <div class="mail">
-            <div class="mhd"><span class="av"></span><div><div class="mfrom">field reporter</div><div class="mmeta">to: newsdesk · just now</div></div></div>
-            <div class="msub">knicks won. 7th ave is chaos rn</div>
-            <div class="tip-photo photo-fill"></div>
-          </div>
-        </div>
-        <div class="email-thread" id="emailThread" style="margin-top:14px;">
-          <div class="eml eml-out eml-anim"><div class="eml-who">you → reporter</div><div class="eml-body">need metadata. when was it taken? what device? send the original</div><div class="eml-time">11:42 pm</div></div>
-          <div class="eml eml-in eml-anim"><div class="eml-who">reporter → you</div><div class="eml-body">just my iphone, like 20 min ago. sending now</div><div class="eml-time">11:48 pm</div></div>
-          <div class="eml eml-out eml-anim"><div class="eml-who">you → reporter</div><div class="eml-body">no exif. did you crop it? need untouched file + location pin</div><div class="eml-time">11:53 pm</div></div>
-          <div class="eml eml-in eml-anim"><div class="eml-who">reporter → you</div><div class="eml-body">yeah i cropped. looking for original in camera roll</div><div class="eml-time">12:01 am</div></div>
-          <div class="eml eml-out eml-anim"><div class="eml-who">you → reporter</div><div class="eml-body">still waiting. can you confirm you were physically there?</div><div class="eml-time">12:14 am</div></div>
-        </div>
+      <div class="email-thread" id="emailThread">
+        <div class="eml eml-out eml-anim"><div class="eml-who">you → reporter</div><div class="eml-body">need metadata. when was it taken? what device? send the original</div><div class="eml-time">11:42 pm</div></div>
+        <div class="eml eml-in eml-anim"><div class="eml-who">reporter → you</div><div class="eml-body">just my iphone, like 20 min ago. sending now</div><div class="eml-time">11:48 pm</div></div>
+        <div class="eml eml-out eml-anim"><div class="eml-who">you → reporter</div><div class="eml-body">no exif. did you crop it? need untouched file + location pin</div><div class="eml-time">11:53 pm</div></div>
+        <div class="eml eml-in eml-anim"><div class="eml-who">reporter → you</div><div class="eml-body">yeah i cropped. looking for original in camera roll</div><div class="eml-time">12:01 am</div></div>
+        <div class="eml eml-out eml-anim"><div class="eml-who">you → reporter</div><div class="eml-body">still waiting. can you confirm you were physically there?</div><div class="eml-time">12:14 am</div></div>
       </div>
     </div>
   </section>
